@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:   # lets you trigger a deploy manually from the Actions tab
 
 jobs:
