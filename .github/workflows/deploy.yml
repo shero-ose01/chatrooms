@@ -1,0 +1,19 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # lets you trigger a deploy manually from the Actions tab
+
+jobs:
+  deploy:
+    runs-on: self-hosted   # your PC's runner
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Build image and (re)start the container
+        run: docker compose up -d --build
+
+      - name: Clean up dangling images
+        run: docker image prune -f

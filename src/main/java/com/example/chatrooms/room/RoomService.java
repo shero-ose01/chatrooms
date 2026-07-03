@@ -7,9 +7,11 @@ import java.util.List;
 @Service
 public class RoomService {
     private final RoomRepository roomRepository;
+    private final RoomSessionService roomSessionService;
 
-    public RoomService(RoomRepository roomRepository){
+    public RoomService(RoomRepository roomRepository, RoomSessionService roomSessionService){
         this.roomRepository = roomRepository;
+        this.roomSessionService = roomSessionService;
     }
 
     public RoomSummary createRoom(String rawName){
@@ -26,7 +28,12 @@ public class RoomService {
         return roomRepository.findAll().stream().map(this::toSummary).toList();
     }
 
+    public RoomSummary getRoom(String name){
+        return roomRepository.findByNameIgnoreCase(name.trim()).map(this::toSummary).orElseThrow(RoomNotFoundException::new);
+    }
+
     private RoomSummary toSummary(Room room){
-        return new RoomSummary(room.getName(), room.getCreatedAt(),0);
+        int count  = (int) roomSessionService.countInRoom(room.getName());
+        return new RoomSummary(room.getName(), room.getCreatedAt(),count);
     }
 }

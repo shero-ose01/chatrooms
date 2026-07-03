@@ -1,0 +1,13 @@
+# build outputs
+target/
+frontend/dist/
+frontend/.angular/
+**/node_modules/
+
+# vcs / editor
+.git/
+.idea/
+*.iml
+
+# misc
+*.log
