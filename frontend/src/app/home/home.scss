@@ -1,0 +1,90 @@
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+.hero {
+  margin-bottom: 2rem;
+
+  h1 {
+    margin: 0;
+    font-size: 2.5rem;
+
+    .accent {
+      color: var(--orange-bright);
+    }
+  }
+
+  .tagline {
+    margin: 0.25rem 0 0;
+    color: var(--fg-dim);
+  }
+}
+
+.create-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  input {
+    flex: 1;
+  }
+}
+
+.room-list {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* room entries are <button>s for a11y — restyled as cards */
+.room-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  width: 100%;
+  text-align: left;
+  font-weight: 400;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--bg1);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+
+  &:hover {
+    background: var(--bg-soft);
+    border-color: var(--orange);
+  }
+
+  .room-name {
+    font-weight: 600;
+    color: var(--orange-bright);
+    overflow-wrap: anywhere;
+  }
+
+  .room-meta {
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+    white-space: nowrap;
+
+    .online {
+      color: var(--green);
+      font-size: 0.9rem;
+    }
+
+    .created {
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.empty {
+  color: var(--fg-dim);
+  text-align: center;
+  padding: 2rem 0;
+}

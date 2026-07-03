@@ -1,11 +1,26 @@
-<input [(ngModel)]="newRoomName" placeholder="Room name" />
-<button (click)="create()">Create room</button>
-@if (error(); as err) { <p class="error">{{ err }}</p> }
-@for (room of rooms(); track room.name) {
-  <div class="room" (click)="join(room.name)">
-    <strong>{{ room.name }}</strong> — {{ room.userCount }} online
-    <small>{{ room.createdAt | date:'short' }}</small>
-  </div>
-} @empty {
-  <p>No rooms open currently<br>create one</p>
-}
+<div class="page">
+  <header class="hero">
+    <h1>chat<span class="accent">rooms</span></h1>
+    <p class="tagline">Create a Chatroom, invite other and chat</p>
+  </header>
+
+  <section class="create-row">
+    <input [(ngModel)]="newRoomName" placeholder="Room name" (keyup.enter)="create()" />
+    <button (click)="create()">Create room</button>
+  </section>
+  @if (error(); as err) { <p class="error">{{ err }}</p> }
+
+  <section class="room-list">
+    @for (room of rooms(); track room.name) {
+      <button type="button" class="room-card" (click)="join(room.name)">
+        <span class="room-name">{{ room.name }}</span>
+        <span class="room-meta">
+          <span class="online">{{ room.userCount }} online</span>
+          <span class="created">{{ room.createdAt | date:'short' }}</span>
+        </span>
+      </button>
+    } @empty {
+      <p class="empty">No rooms open currently, create one</p>
+    }
+  </section>
+</div>
