@@ -1,0 +1,51 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Secrets / local config ###
+.env
+.env.*
+*.local.properties
+application-local.properties
+
+### OS files ###
+.DS_Store
+Thumbs.db
+
+### Logs ###
+*.log
+
+### Angular frontend (added in Step 6; ng also generates its own) ###
+node_modules/
+frontend/dist/
+frontend/.angular/
