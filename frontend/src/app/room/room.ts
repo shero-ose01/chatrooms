@@ -66,4 +66,5 @@ export class Room implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.client?.deactivate();
   }
+  get displayRoomName():string { return this.roomName.replaceAll('_', ' ');}
 }

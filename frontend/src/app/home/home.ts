@@ -35,7 +35,15 @@ export class Home implements OnInit {
           this.load();
           this.router.navigate(['/room',r.name]);
         },
-        error: e => this.error.set(e)
+        error: e => {
+            if(e.status === 409){
+              this.error.set("That room name is already taken");
+              }else if(e.status === 400){
+                this.error.set(e.error?.detail?? "Invalid room name");
+                }else{
+                  this.error.set("Something went wrong. Please try again");
+                  }
+          }
       }
     )
   }
@@ -43,4 +51,7 @@ export class Home implements OnInit {
   join(name: string){
     this.router.navigate(['/room',name]);
   }
+
+ displayRoomName(name:string):string{ return name.replaceAll('_', ' ');}
+
 }

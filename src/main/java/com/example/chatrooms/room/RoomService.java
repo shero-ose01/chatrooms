@@ -6,6 +6,7 @@ import java.util.List;
 
 @Service
 public class RoomService {
+
     private final RoomRepository roomRepository;
     private final RoomSessionService roomSessionService;
 
@@ -16,11 +17,11 @@ public class RoomService {
 
     public RoomSummary createRoom(String rawName){
         String trimmedName = rawName.trim();
-
-        if(roomRepository.existsByNameIgnoreCase(trimmedName)){
+        String spacesSwapped = trimmedName.replaceAll(" ", "_"); // currently you just get an error if the room name has a space somewhere in between, swapped them for _
+        if(roomRepository.existsByNameIgnoreCase(spacesSwapped)){
             throw new RoomNameTakenException();
         }
-        Room saved = roomRepository.save(new Room(trimmedName));
+        Room saved = roomRepository.save(new Room(spacesSwapped));
         return this.toSummary(saved);
     }
 
@@ -29,7 +30,7 @@ public class RoomService {
     }
 
     public RoomSummary getRoom(String name){
-        return roomRepository.findByNameIgnoreCase(name.trim()).map(this::toSummary).orElseThrow(RoomNotFoundException::new);
+        return roomRepository.findByNameIgnoreCase(name).map(this::toSummary).orElseThrow(RoomNotFoundException::new);
     }
 
     private RoomSummary toSummary(Room room){

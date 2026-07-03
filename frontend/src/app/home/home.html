@@ -13,7 +13,7 @@
   <section class="room-list">
     @for (room of rooms(); track room.name) {
       <button type="button" class="room-card" (click)="join(room.name)">
-        <span class="room-name">{{ room.name }}</span>
+        <span class="room-name">{{ displayRoomName(room.name) }}</span>
         <span class="room-meta">
           <span class="online">{{ room.userCount }} online</span>
           <span class="created">{{ room.createdAt | date:'short' }}</span>
