@@ -9,11 +9,11 @@ jobs:
   deploy:
     runs-on: self-hosted 
     steps:
-      - name: Check out the code
+      - name: Code Check
         uses: actions/checkout@v5
 
-      - name: Build image and (re)start the container
+      - name: Build image and start the container
         run: docker compose up -d --build
 
-      - name: Clean up dangling images
+      - name: Clean up images
         run: docker image prune -f
