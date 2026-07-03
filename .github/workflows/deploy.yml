@@ -3,14 +3,14 @@ name: Deploy
 on:
   push:
     branches: [master]
-  workflow_dispatch:   # lets you trigger a deploy manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   deploy:
-    runs-on: self-hosted   # your PC's runner
+    runs-on: self-hosted 
     steps:
       - name: Check out the code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Build image and (re)start the container
         run: docker compose up -d --build
