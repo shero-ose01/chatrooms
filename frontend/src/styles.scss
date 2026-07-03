@@ -1,1 +1,82 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles — gruvbox dark, orange accent */
+
+:root {
+  color-scheme: dark;
+
+  /* gruvbox dark palette */
+  --bg-hard: #1d2021;
+  --bg: #282828;
+  --bg-soft: #32302f;
+  --bg1: #3c3836;
+  --bg2: #504945;
+  --fg: #ebdbb2;
+  --fg-dim: #a89984;
+  --gray: #928374;
+  --orange: #d65d0e;
+  --orange-bright: #fe8019;
+  --red: #fb4934;
+  --green: #b8bb26;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-hard);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+}
+
+input {
+  font: inherit;
+  color: var(--fg);
+  background: var(--bg);
+  border: 2px solid var(--bg2);
+  border-radius: 4px;
+  padding: 0.55rem 0.75rem;
+
+  &::placeholder {
+    color: var(--gray);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--orange-bright);
+  }
+}
+
+button {
+  font: inherit;
+  font-weight: 600;
+  color: var(--bg-hard);
+  background: var(--orange);
+  border: none;
+  border-radius: 4px;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--orange-bright);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.error {
+  color: var(--red);
+}
+
+/* scrollbars to match the theme */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg2) var(--bg);
+}
