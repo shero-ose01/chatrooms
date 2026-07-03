@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/rooms")
 public class RoomController {
 
-    public RoomService roomService;
+    private final RoomService roomService;
 
     public RoomController(RoomService roomService){
         this.roomService = roomService;
@@ -27,4 +27,8 @@ public class RoomController {
         return roomService.listRooms();
     }
 
+    @GetMapping("/{name}")
+    public RoomSummary getRoom(@PathVariable String name){
+        return roomService.getRoom(name);
+    }
 }

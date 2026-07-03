@@ -1,0 +1,11 @@
+<h2>{{ roomName }}</h2>
+<p>Share this link: <input [value]="shareLink" readonly size="40"></p>
+
+<div class="chat">
+  @for (m of messages(); track $index) {
+    <div><strong>{{ m.sender }}:</strong> {{ m.content }}</div>
+  }
+</div>
+
+<input [(ngModel)]="draft" (keyup.enter)="send()" placeholder="Type a message…">
+<button (click)="send()">Send</button>
