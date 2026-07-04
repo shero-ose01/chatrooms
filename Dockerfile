@@ -11,7 +11,7 @@ COPY pom.xml .
 RUN mvn -q -B dependency:go-offline
 COPY src ./src
 COPY --from=frontend /frontend/dist/frontend/browser/ ./src/main/resources/static/
-RUN mvn -q -B clean package -DskipTests
+RUN mvn -q -B clean package
 
 FROM eclipse-temurin:21-jre
 WORKDIR /app
